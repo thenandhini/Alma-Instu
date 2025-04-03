@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Roles from './pages/Roles';
-// import RoleDetail from './pages/RoleDetail';
+import Operations from './pages/Operations';
 import Alumni from './pages/Alumni';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -26,6 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/roles" element={<Roles />} />
+              <Route path="/roles/operation-manager" element ={<Operations/>}/>
               {/* <Route path="/roles/:roleName" element={<RoleDetail />} /> */}
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/login" element={<Login />} />
