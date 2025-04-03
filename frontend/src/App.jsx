@@ -13,7 +13,7 @@ import CreatePost from './pages/CreatePost';
 // import FAQs from './pages/FAQs';
 // import Contribute from './pages/Contribute';
 import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
               <Route 
                 path="/dashboard" 
                 element={
-                  <ProtectedRoute>
+                  // <ProtectedRoute>
                     <Dashboard />
-                  </ProtectedRoute>
+                  // </ProtectedRoute>
                 } 
               />
               <Route 
