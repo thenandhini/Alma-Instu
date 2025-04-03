@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/roles" element={<Roles />} />
-              <Route path="/roles/:roleName" element={<RoleDetail />} />
+              {/* <Route path="/roles/:roleName" element={<RoleDetail />} /> */}
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
