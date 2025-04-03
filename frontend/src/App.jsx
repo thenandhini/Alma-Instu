@@ -10,7 +10,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
 import Profile from './pages/Profile';
-import FAQs from './pages/FAQs';
+// import FAQs from './pages/FAQs';
 import Contribute from './pages/Contribute';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -30,7 +30,7 @@ function App() {
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/faqs" element={<FAQs />} />
+              {/* <Route path="/faqs" element={<FAQs />} /> */}
               <Route 
                 path="/dashboard" 
                 element={
