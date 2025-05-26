@@ -62,7 +62,7 @@ const Alumni = () => {
     if (selectedBatch && selectedDepartment) {
       fetchAlumni(selectedBatch, selectedDepartment);
     }
-      console.log("🚀 ~ useEffect ~ fetchAlumni triggered", )
+    
      
   }, [selectedBatch, selectedDepartment]);
 
@@ -72,10 +72,10 @@ const Alumni = () => {
       const response = await api.get(
         `/api/alumni?batch=${batch}&department=${department}`
       );
-      console.log("🚀 ~ fetchAlumni ~ response:", response);
+   
       
       if (response.data && response.data.length === 0) {
-        console.log("Empty response, using fallback data");
+   
         throw new Error("No data available from API");
       }
       
@@ -166,10 +166,7 @@ const Alumni = () => {
         },
       };
 
-      console.log("Selected batch:", batch);
-      console.log("Selected department:", department);
-      console.log("Available batches in mock data:", Object.keys(fallbackAlumniData));
-      console.log("Available departments for batch:", fallbackAlumniData[batch] ? Object.keys(fallbackAlumniData[batch]) : 'No departments');
+     
 
       const mockAlumni = fallbackAlumniData[batch]?.[department] || [];
       
