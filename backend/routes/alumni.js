@@ -7,30 +7,31 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const { batch, department } = req.query;
-    
+
     let query = { role: 'alumni' };
-    
+
     if (batch) {
-      query.graduationYear = batch;
+      query.graduationYear = Number(batch); // ensure number type
     }
-    
+
     if (department) {
-      query.department = department;
+      query.department = { $regex: new RegExp(`^${department}$`, 'i') }; // case-insensitive
     }
-    
+
+    console.log("Alumni query:", query);
+
     const alumni = await User.find(query)
       .select('firstName lastName company jobTitle linkedin')
       .sort('firstName');
-    
-    // Format alumni for client
-    const formattedAlumni = alumni.map((alumnus, index) => ({
+
+    const formattedAlumni = alumni.map((alumnus) => ({
       id: alumnus._id,
       name: `${alumnus.firstName} ${alumnus.lastName}`,
       company: alumnus.company || 'Not specified',
       role: alumnus.jobTitle || 'Not specified',
       linkedin: alumnus.linkedin || '#'
     }));
-    
+
     res.json(formattedAlumni);
   } catch (error) {
     console.error('Error fetching alumni:', error);

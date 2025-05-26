@@ -1,26 +1,20 @@
 import express from 'express';
-import User from '../models/User.js';
 
 const router = express.Router();
 
-// Get all graduation years (batches)
+// Get all departments
 router.get('/', async (req, res) => {
   try {
-    // Find all unique graduation years from alumni
-    const users = await User.find({ role: 'alumni' }).distinct('graduationYear');
-    
-    // Sort years in descending order
-    const sortedYears = users.sort((a, b) => b - a);
-    
-    // Format response
-    const batches = sortedYears.map((year, index) => ({
-      id: index + 1,
-      year
-    }));
+    const batches = [
+      { id: 1, year: '2023' },
+      { id: 2, year: '2022' },
+      { id: 3, year: '2021' },
+      { id: 4, year: '2020' },
+    ];
     
     res.json(batches);
   } catch (error) {
-    console.error('Error fetching batches:', error);
+    console.error('Error fetching departments:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
