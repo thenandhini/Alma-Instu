@@ -1,140 +1,83 @@
-import { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
-import api from '../services/api';
-import './Dashboard.css';
+import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import api from "../services/api";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const { currentUser } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await api.get('/api/posts');
+        const response = await api.get("/api/posts");
         setPosts(response.data);
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching posts:', err);
-        setError('Failed to load posts. Please try again later.');
+        console.error("Error fetching posts:", err);
+        setError("Failed to load posts. Please try again later.");
         setLoading(false);
-        
-        // Set fallback data
-        setFallbackPosts();
       }
     };
-
     fetchPosts();
   }, []);
 
-  const setFallbackPosts = () => {
-    const fallbackPosts = [
-      {
-        id: 1,
-        title: 'Tips for Cracking Amazon Interview',
-        content: 'Here are some tips that helped me crack the Amazon interview for the role of Operation Manager...',
-        type: 'tips',
-        author: {
-          name: 'John Doe',
-          role: 'alumni',
-          company: 'Amazon'
-        },
-        createdAt: '2023-04-15T10:30:00Z'
-      },
-      {
-        id: 2,
-        title: 'Supply Chain Management Study Material',
-        content: 'I\'ve compiled a comprehensive study material for Supply Chain Management that covers all the important topics...',
-        type: 'study',
-        author: {
-          name: 'Prof. Sarah Johnson',
-          role: 'teacher',
-          department: 'Industrial and Production Engineering'
-        },
-        createdAt: '2023-04-10T14:20:00Z'
-      },
-      {
-        id: 3,
-        title: 'Job Opening at Microsoft for Industrial Engineers',
-        content: 'Microsoft is hiring Industrial Engineers for their new manufacturing facility. The role involves...',
-        type: 'job',
-        author: {
-          name: 'Jane Smith',
-          role: 'alumni',
-          company: 'Microsoft'
-        },
-        createdAt: '2023-04-05T09:15:00Z'
-      },
-      {
-        id: 4,
-        title: 'Lean Six Sigma Certification Guide',
-        content: 'If you\'re looking to get certified in Lean Six Sigma, here\'s a step-by-step guide that I followed...',
-        type: 'study',
-        author: {
-          name: 'Michael Brown',
-          role: 'alumni',
-          company: 'Deloitte'
-        },
-        createdAt: '2023-04-01T16:45:00Z'
-      },
-      {
-        id: 5,
-        title: 'Mock Interview Sessions for Placement Season',
-        content: 'I\'m organizing mock interview sessions for students preparing for the upcoming placement season...',
-        type: 'tips',
-        author: {
-          name: 'Dr. Robert Chen',
-          role: 'teacher',
-          department: 'Industrial and Production Engineering'
-        },
-        createdAt: '2023-03-28T11:30:00Z'
+  // Filter posts based on type, if needed
+  const filteredPosts =
+    filter === "all" ? posts : posts.filter((post) => post.type === filter);
+
+  const handleDeletePost = async (postId) => {
+    if (window.confirm("Delete this post?")) {
+      try {
+        await api.delete(`/api/posts/${postId}`);
+        setPosts(posts.filter((post) => post.id !== postId));
+      } catch (err) {
+        console.error("Error deleting post:", err);
+        setError("Failed to delete post.");
       }
-    ];
-    
-    setPosts(fallbackPosts);
+    }
   };
 
-  const filteredPosts = filter === 'all' 
-    ? posts 
-    : posts.filter(post => post.type === filter);
-
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+  const formatDate = (date) => {
+    const dt = new Date(date);
+    return dt.toLocaleDateString();
   };
 
   return (
     <div className="dashboard-page">
       <div className="dashboard-header">
         <h1>Dashboard</h1>
-        <Link to="/create-post" className="create-post-btn">Create Post</Link>
+        <Link to="/create-post" className="create-post-btn">
+          Create Post
+        </Link>
       </div>
 
       <div className="dashboard-filters">
-        <button 
-          className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-          onClick={() => setFilter('all')}
+        <button
+          className={`filter-btn ${filter === "all" ? "active" : ""}`}
+          onClick={() => setFilter("all")}
         >
           All Posts
         </button>
-        <button 
-          className={`filter-btn ${filter === 'study' ? 'active' : ''}`}
-          onClick={() => setFilter('study')}
+        <button
+          className={`filter-btn ${filter === "study" ? "active" : ""}`}
+          onClick={() => setFilter("study")}
         >
           Study Materials
         </button>
-        <button 
-          className={`filter-btn ${filter === 'tips' ? 'active' : ''}`}
-          onClick={() => setFilter('tips')}
+        <button
+          className={`filter-btn ${filter === "tips" ? "active" : ""}`}
+          onClick={() => setFilter("tips")}
         >
           Tips & Tricks
         </button>
-        <button 
-          className={`filter-btn ${filter === 'job' ? 'active' : ''}`}
-          onClick={() => setFilter('job')}
+        <button
+          className={`filter-btn ${filter === "job" ? "active" : ""}`}
+          onClick={() => setFilter("job")}
         >
           Job Opportunities
         </button>
@@ -147,15 +90,33 @@ const Dashboard = () => {
       ) : (
         <div className="posts-container">
           {filteredPosts.length > 0 ? (
-            filteredPosts.map(post => (
+            filteredPosts.map((post) => (
               <div key={post.id} className="post-card">
                 <div className="post-header">
                   <div className="post-type-badge" data-type={post.type}>
-                    {post.type === 'study' && 'Study Material'}
-                    {post.type === 'tips' && 'Tips & Tricks'}
-                    {post.type === 'job' && 'Job Opportunity'}
+                    {post.type === "study" && "Study Material"}
+                    {post.type === "tips" && "Tips & Tricks"}
+                    {post.type === "job" && "Job Opportunity"}
                   </div>
-                  <h3 className="post-title">{post.title}</h3>
+                  <h3 className="post-title">
+                    {post.title}
+
+                    <span className="download-link">
+                      <a
+                        href={"https://docs.google.com/document/d/1LF2S1zbhpQS4Yd_RJ_LO9eR-Oui0Yc-cOYLuyG5NQIc/edit?tab=t.0"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        [ Click here to Open]
+                      </a>
+                    </span>
+                  </h3>
+                  {/* <button
+                    className="delete-post-btn"
+                    onClick={() => handleDeletePost(post.id)}
+                  >
+                    Delete
+                  </button> */}
                 </div>
                 <div className="post-content">
                   <p>{post.content}</p>
@@ -164,7 +125,9 @@ const Dashboard = () => {
                   <div className="post-author">
                     <span className="author-name">{post.author.name}</span>
                     <span className="author-role">
-                      {post.author.role === 'alumni' ? `Alumni at ${post.author.company}` : `Teacher, ${post.author.department}`}
+                      {post.author.role === "alumni"
+                        ? `Alumni at NITJ, 2025 Batch`
+                        : `Admin, ${post.author.department}`}
                     </span>
                   </div>
                   <div className="post-date">{formatDate(post.createdAt)}</div>

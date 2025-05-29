@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 // import FAQs from './pages/FAQs';
 // import Contribute from './pages/Contribute';
 import { AuthProvider } from './context/AuthContext';
@@ -48,6 +48,7 @@ function App() {
                   // </ProtectedRoute>
                 } 
               />
+               <Route path="/profile" element={<Profile />} />
               {/* <Route 
                 path="/profile" 
                 element={

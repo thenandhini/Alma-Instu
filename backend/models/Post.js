@@ -20,10 +20,10 @@ const postSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  attachments: [{
+  attachment: [{
     filename: String,
     path: String,
-    mimetype: String
+    source: String,
   }],
   likes: [{
     type: mongoose.Schema.Types.ObjectId,

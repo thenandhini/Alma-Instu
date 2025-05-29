@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['alumni', 'teacher', 'student', 'admin'],
+    enum: ['alumni', 'student', 'admin'],
     default: 'student'
   },
   graduationYear: {
@@ -37,14 +37,20 @@ const userSchema = new mongoose.Schema({
   department: {
     type: String,
     required: function() {
-      return this.role === 'alumni' || this.role === 'teacher' || this.role === 'student';
+      return this.role === 'alumni' || this.role === 'admin' || this.role === 'student';
     }
   },
   company: {
     type: String,
     required: function() {
-      return this.role === 'alumni';
-    }
+      // Only required for alumni who have completed their profile
+      return this.role === 'alumni' && this.profileComplete;
+    },
+    default: ''  // Set default empty string
+  },
+  profileComplete: {
+    type: Boolean,
+    default: false
   },
   jobTitle: {
     type: String

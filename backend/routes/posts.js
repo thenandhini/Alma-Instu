@@ -51,24 +51,26 @@ router.get('/', async (req, res) => {
     
     // Format posts for client
     const formattedPosts = posts.map(post => {
-      const { _id, title, content, type, createdAt, updatedAt } = post;
+      const { _id, title, content, type, createdAt, updatedAt, attachments } = post;
       const author = {
         name: `${post.author.firstName} ${post.author.lastName}`,
         role: post.author.role,
         company: post.author.company,
         department: post.author.department
       };
-      
+    
       return {
         id: _id,
         title,
         content,
         type,
         author,
+        attachments, 
         createdAt,
         updatedAt
       };
     });
+    
     
     res.json(formattedPosts);
   } catch (error) {
@@ -80,24 +82,33 @@ router.get('/', async (req, res) => {
 // Create a new post
 router.post('/', auth, upload.array('attachments', 5), async (req, res) => {
   try {
-    const { title, content, type } = req.body;
+    const { title, content, type,  attachmentUrl, } = req.body;
     
     // Create post object
     const postData = {
       title,
       content,
       type,
-      author: req.userId
+      author: req.userId,
+
     };
     
-    // Add attachments if any
-    if (req.files && req.files.length > 0) {
-      postData.attachments = req.files.map(file => ({
+    if (attachmentUrl) {
+      postData.attachment = {
+        filename: attachmentUrl.split('/').pop(),
+        url: attachmentUrl,
+        source: 'external'
+      };
+    } else if (req.files && req.files.length > 0) {
+      const file = req.files[0];
+      postData.attachment = {
         filename: file.originalname,
-        path: file.path,
-        mimetype: file.mimetype
-      }));
+        url: `${req.protocol}://${req.get('host')}/uploads/${file.filename}`,
+        source: 'upload'
+      };
     }
+    
+    
     
     const post = new Post(postData);
     await post.save();
@@ -117,9 +128,11 @@ router.post('/', auth, upload.array('attachments', 5), async (req, res) => {
         company: post.author.company,
         department: post.author.department
       },
+      attachmentUrl: post.attachment?.url || null,
       createdAt: post.createdAt,
       updatedAt: post.updatedAt
     };
+    
     
     res.status(201).json(formattedPost);
   } catch (error) {

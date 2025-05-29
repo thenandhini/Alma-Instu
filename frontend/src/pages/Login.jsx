@@ -5,7 +5,7 @@ import './Auth.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    userId: '',
     password: ''
   });
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     
-    const success = await login(formData.email, formData.password);
+    const success = await login(formData.userId, formData.password);
     
     setLoading(false);
     if (success) {
@@ -41,16 +41,16 @@ const Login = () => {
         
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="userId">User-Id</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
+              type="userId"
+              id="userId"
+              name="userId"
+              value={formData.userId}
               onChange={handleChange}
               required
               className="form-control"
-              placeholder="Enter your email"
+              placeholder="Enter your userId"
             />
           </div>
           

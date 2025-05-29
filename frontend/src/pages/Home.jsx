@@ -30,7 +30,7 @@ const Home = () => {
           <div className="feature-card">
             <div className="feature-icon">📚</div>
             <h3>Study Materials</h3>
-            <p>Access curated study materials shared by alumni and teachers</p>
+            <p>Access curated study materials shared by alumni </p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">💡</div>

@@ -4,7 +4,8 @@
   
   .hero-section {
     background-color: white;
-    padding: 40px 0;
+    padding:80px;
+    margin-top:80px;
     margin-bottom: 40px;
     border-bottom: 1px solid #eee;
   }

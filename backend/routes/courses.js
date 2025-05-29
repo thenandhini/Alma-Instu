@@ -42,12 +42,12 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new course (admin or teacher only)
+// Create a new course (admin or Admin only)
 router.post('/', auth, async (req, res) => {
   try {
-    // Check if user is admin or teacher (in a real app)
+    // Check if user is admin or Admin (in a real app)
     // const user = await User.findById(req.userId);
-    // if (user.role !== 'admin' && user.role !== 'teacher') {
+    // if (user.role !== 'admin' && user.role !== 'Admin') {
     //   return res.status(403).json({ message: 'Not authorized' });
     // }
     

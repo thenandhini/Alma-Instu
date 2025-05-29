@@ -36,10 +36,10 @@ const Alumni = () => {
 
         // Set fallback data
         const fallbackBatches = [
-          { id: 1, year: "2023" },
-          { id: 2, year: "2022" },
-          { id: 3, year: "2021" },
-          { id: 4, year: "2020" },
+          { id: 1, year: "2025" },
+          { id: 2, year: "2021" },
+          { id: 3, year: "2020" },
+          { id: 4, year: "2019" },
         ];
 
         const fallbackDepartments = [
@@ -86,7 +86,79 @@ const Alumni = () => {
       setLoading(false);
 
       const fallbackAlumniData = {
-        2023: {
+        2025: {
+          "Industrial and Production Engineering": [
+            {
+              id: 1,
+              name: "Krishan Gopal",
+              company: "RHI Magnesita",
+              role: "Graduate Engineer Trainee",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 2,
+              name: "Garv",
+              company: "Mondelez",
+              role: "Supply Chain",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 3,
+              name: "Mahinder",
+              company: "Jubilant Foodworks",
+              role: "Supply Chain",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 4,
+              name: "Manish",
+              company: "Neco Jaiswal",
+              role: "GET",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 5,
+              name: "Lovegeet",
+              company: "Listen Lights",
+              role: "Graduate Engineer Trainee",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 6,
+              name: "suraj",
+              company: "Subros",
+              role: "Graduate Engineer Trainee",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 7,
+              name: "Saurav",
+              company: "Aashirvaad Pipes",
+              role: "GET",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 8,
+              name: "Kapil",
+              company: "Flipkart",
+              role: "Supply Chain",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 9,
+              name: "Sunil",
+              company: "Tex fastener",
+              role: "GET",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 10,
+              name: "Nishant Chaudhary",
+              company: "Shorthils",
+              role: "SDE",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+          ],
           "Computer Science Engineering": [
             {
               id: 1,
@@ -113,14 +185,77 @@ const Alumni = () => {
             },
           ],
         },
-        2022: {
+        2019: {
           "Industrial and Production Engineering": [
             {
+              id: 1,
+              name: "vikas kumar",
+              company: "incedo",
+              role: "SDE",
+              linkedin: "linkedin.com/in/vikaskr1",
+            },
+            {
+              id: 2,
+              name: "Ram Niwas",
+              company: "Subros",
+              role: "Process engineer",
+              linkedin: "linkedin.com/in/ramniwasdhakar",
+            },
+            {
+              id: 3,
+              name: "Ruchi Ray",
+              company: "0xppl",
+              role: "SDE",
+              linkedin: "linkedin.com/in/ruchi-ray-a3ab0b1ba",
+            },
+            {
               id: 4,
-              name: "Michael Brown",
-              company: "GE",
-              role: "Manufacturing Engineer",
-              linkedin: "https://linkedin.com/in/michaelbrown",
+              name: "Syed Aareez",
+              company: "Incedo",
+              role: "SDE",
+              linkedin: "linkedin.com/in/syed-aareez-63414b197",
+            },
+            {
+              id: 5,
+              name: "Titir Biswas",
+              company: "Subros",
+              role: "Suppy chain Analyst",
+              linkedin: "linkedin.com/in/biswastitir",
+            },
+            {
+              id: 6,
+              name: "Nalin Shrivastava",
+              company: "Jubliant Generics",
+              role: "Asistant Manager",
+              linkedin: "linkedin.com/in/nalinshrivastava",
+            },
+            {
+              id: 7,
+              name: "Nikhil Bharti",
+              company: "Subros",
+              role: "Research and Development Engineer",
+              linkedin: "linkedin.com/in/nikhil-bharti-702766229",
+            },
+            {
+              id: 8,
+              name: "Nityam Mahajan",
+              company: "Delhivery",
+              role: "Operation Manger",
+              linkedin: "https://linkedin.com/in/oliviathomas",
+            },
+            {
+              id: 9,
+              name: "Lakhan Kumawat",
+              company: "Kaggle Notebooks Expert",
+              role: "Data Analytics",
+              linkedin: "linkedin.com/in/lakhan-kumawat-596b4099",
+            },
+            {
+              id: 10,
+              name: "Gourav Lalotra",
+              company: "sentra.World",
+              role: "SDE",
+              linkedin: "linkedin.com/in/gouravlalotra",
             },
           ],
           "Computer Science Engineering": [
@@ -143,6 +278,93 @@ const Alumni = () => {
               linkedin: "https://linkedin.com/in/sarahwilliams",
             },
           ],
+          "Industrial and Production Engineering": [
+            {
+              id: 1,
+              name: "Nandhini R",
+              company: "Tata 1mg ",
+              role: "Software Developer ",
+              linkedin: "https://www.linkedin.com/in/the-nandhini-r",
+            },
+            {
+              id: 2,
+              name: "Vadthya Kaveri",
+              company: "Jubilant Foodworks",
+              role: "Graduate Engineer Trainee",
+              linkedin: "https://www.linkedin.com/in/vadthya-kaveri-82b832239/",
+            },
+
+            {
+              id: 3,
+              name: "Krishan Gopal",
+              company: "RHI Magnesita",
+              role: "Graduate Engineer Trainee",
+              linkedin: "linkedin.com/in/krishan-gopal-4878692b6",
+            },
+            {
+              id: 4,
+              name: "Garv",
+              company: "Mondelez",
+              role: "Supply Chain",
+              linkedin: "linkedin.com/in/garv-arora",
+            },
+            {
+              id: 5,
+              name: "Mahinder",
+              company: "Jubilant Foodworks",
+              role: "Supply Chain",
+              linkedin: "linkedin.com/in/mahinder-sangwal-b49b0922b",
+            },
+            {
+              id: 6,
+              name: "Devesh Mishra",
+              company: "Neco Jaiswal",
+              role: "GET",
+              linkedin: "linkedin.com/in/devesh-mishra-430554293",
+            },
+            {
+              id: 7,
+              name: "Lovegeet",
+              company: "Listen Lights",
+              role: "Graduate Engineer Trainee",
+              linkedin: "linkedin.com/in/lovegeet-kaur-a31b38272",
+            },
+            {
+              id: 8,
+              name: "suraj",
+              company: "Subros",
+              role: "Graduate Engineer Trainee",
+              linkedin: "linkedin.com/in/suraj-sandal-707198260",
+            },
+            {
+              id: 9,
+              name: "Saurabh",
+              company: "Aashirvaad Pipes",
+              role: "GET",
+              linkedin: "linkedin.com/in/saurabh-thenua-631a86228",
+            },
+            {
+              id: 10,
+              name: "Khetramohan Oram",
+              company: "Proxima Steel",
+              role: "GET",
+              linkedin: "linkedin.com/in/khetramohan-oram",
+            },
+            {
+              id: 11,
+              name: "Sunil",
+              company: "Tex fastener",
+              role: "GET",
+              linkedin: "linkedin.com/in/sunil-badala-63462723a",
+            },
+            {
+              id: 12,
+              name: "Nishant Chaudhary",
+              company: "Shorthils",
+              role: "SDE",
+              linkedin: "linkedin.com/in/nishant-choudhary-a37737229",
+            },
+          ],
         },
         2020: {
           "Computer Science Engineering": [
@@ -156,11 +378,74 @@ const Alumni = () => {
           ],
           "Industrial and Production Engineering": [
             {
+              id: 1,
+              name: "Amisha Attri",
+              company: "Polycab",
+              role: "Sales",
+              linkedin: "linkedin.com/in/amisha-attri-8a39b9214",
+            },
+            {
+              id: 2,
+              name: "Aditya Gupta",
+              company: "Terobots",
+              role: "SDE",
+              linkedin: "linkedin.com/in/aditya-25-gupta",
+            },
+            {
+              id: 3,
+              name: "Arshita Katal",
+              company: "Jubilant Foodworks",
+              role: "Supply Chain",
+              linkedin: "linkedin.com/in/arshita-katal",
+            },
+            {
+              id: 4,
+              name: "Aniket bhujang",
+              company: "Shopdeck",
+              role: "Growth Lead",
+              linkedin: "linkedin.com/in/bhujanganiket"
+            },
+            {
+              id: 5,
+              name: "Ishan Dubb",
+              company: "Vedanta",
+              role: "Graduate Engineer Trainee",
+              linkedin: "linkedin.com/in/ishan-dubb-288358226",
+            },
+            {
+              id: 6,
+              name: "Jatin Gupta",
+              company: "Subros",
+              role: "Graduate Engineer Trainee",
+              linkedin: "linkedin.com/in/jatin-gupta-6598931a7",
+            },
+            {
+              id: 7,
+              name: "Hardik Singla",
+              company: "Zomato",
+              role: "Sales",
+              linkedin: "linkedin.com/in/hardik-singla2411",
+            },
+            {
               id: 8,
-              name: "Olivia Thomas",
-              company: "Bosch",
-              role: "Process Engineer",
-              linkedin: "https://linkedin.com/in/oliviathomas",
+              name: "Naina",
+              company: "Flipkart",
+              role: "Supply Chain",
+              linkedin: "linkedin.com/in/naina-sekhri-205a27213",
+            },
+            {
+              id: 9,
+              name: "Prerna Bhansali",
+              company: "Amazon",
+              role: "Supply Chain",
+              linkedin: "linkedin.com/in/prerna-bhansali7",
+            },
+            {
+              id: 10,
+              name: "Shiwam Kumar",
+              company: "Incture",
+              role: "SDE",
+              linkedin: "linkedin.com/in/shiwam-sinha-198334230",
             },
           ],
         },
