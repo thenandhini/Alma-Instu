@@ -38,22 +38,22 @@
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    min-height: 250px;
     font-size: 1.5rem;
     font-weight: 500;
-    height: 75vh;
+    height: fit-content;
 }
 
 .file-list {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 2rem;
     align-items: flex-start;
 }
 
 /* Hiring Companies Section */
 .sidebar {
+    margin-top:100px;
     flex: 1;
     background-color: #e9f0fa;
     padding: 2rem;
@@ -95,7 +95,13 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.1rem;
-  gap: 1.5rem; /* space between title and link */
+  gap: 1.5rem; 
+  background: whitesmoke;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  height: 100px;
 }
 
 .file-item a {
