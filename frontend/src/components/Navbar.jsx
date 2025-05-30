@@ -41,9 +41,6 @@ const Navbar = () => {
           <Link to="/alumni" className="nav-link">
             Alumnus
           </Link>
-          <Link to="/faqs" className="nav-link">
-            FAQs
-          </Link>
           {currentUser ? (
             <>
               <Link

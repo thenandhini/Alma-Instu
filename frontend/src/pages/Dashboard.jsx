@@ -101,16 +101,19 @@ const Dashboard = () => {
                   <h3 className="post-title">
                     {post.title}
 
-                    <span className="download-link">
-                      <a
-                        href={"https://docs.google.com/document/d/1LF2S1zbhpQS4Yd_RJ_LO9eR-Oui0Yc-cOYLuyG5NQIc/edit?tab=t.0"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        [ Click here to Open]
-                      </a>
-                    </span>
+                    {post.type === "study" && (
+                      <span className="download-link">
+                        <a
+                          href="https://docs.google.com/document/d/1LF2S1zbhpQS4Yd_RJ_LO9eR-Oui0Yc-cOYLuyG5NQIc/edit?tab=t.0"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          [ Click here to Open]
+                        </a>
+                      </span>
+                    )}
                   </h3>
+
                   {/* <button
                     className="delete-post-btn"
                     onClick={() => handleDeletePost(post.id)}
